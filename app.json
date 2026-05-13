@@ -1,0 +1,69 @@
+{
+  "expo": {
+    "name": "Docta Comunitarias",
+    "slug": "villamaria",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/adaptive-icon.png",
+    "splash": {
+      "image": "./assets/logonuevo.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0066CC"
+    },
+    "userInterfaceStyle": "light",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "59948c5f-7a90-456e-9ae3-ca80b120b70a"
+      }
+    },
+    "runtimeVersion": "1.0.0",
+    "updates": {
+      "url": "https://u.expo.dev/22a6f3e7-03b4-4d0f-b10b-2788ae3c3ed8"
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-font",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0066CC",
+          "image": "./assets/logonuevo.png",
+          "resizeMode": "contain",
+          "imageWidth": 200
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 35,
+            "targetSdkVersion": 35,
+            "minSdkVersion": 24,
+            "buildToolsVersion": "35.0.0"
+          }
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pedrodarrigo.DesitAppV33",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "android": {
+      "package": "com.pedrodarrigo.DesitAppV33",
+      "googleServicesFile": "./google-services.json",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#0066CC"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
