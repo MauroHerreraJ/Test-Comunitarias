@@ -12,7 +12,6 @@ import { Asset } from "expo-asset";
 import AllButtons from "./screen/AllButtons";
 import Configuration from "./screen/Configuration";
 import User from "./screen/User";
-import Welcome from "./screen/Welcome";
 import GrabarBorrar from "./component/GrabarBorrar";
 import { getPanicAppByCode, registerNotificationToken } from "./util/Api";
 import { registerForPushNotificationsAsync } from "./util/Notifications";
@@ -249,23 +248,12 @@ function NoAuthorizedNavigation() {
       }}
     >
       <BottomTabs.Screen
-        name="Welcome"
-        component={Welcome}
-        options={{
-          headerShown: false,
-          tabBarStyle: { display: "none" },
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="home-outline" size={size} color={color} />
-          ),
-        }}
-      />
-
-      <BottomTabs.Screen
         name="Configuration"
         component={Configuration}
         options={{
           tabBarStyle: { display: "none" },
           title: "Configuración",
+          headerShown: false,
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="settings-outline" size={size} color={color} />
           ),
@@ -451,7 +439,6 @@ export default function App() {
               headerTintColor: "white",
             }}
           />
-          <Stack.Screen name="Welcome" component={Welcome} />
           <Stack.Screen
             name="User"
             component={User}

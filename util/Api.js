@@ -2,7 +2,7 @@ import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // 🔹 URL base centralizada - Cambia esta línea para actualizar todas las URLs
-const DEVELOP_URL = "https://desit-server-3e06b7680f25.herokuapp.com";
+const DEVELOP_URL = "https://desit-server-staging-a51a84ceec47.herokuapp.com";
 
 const getBaseUrl = () => {
   return DEVELOP_URL;
@@ -44,8 +44,11 @@ export const postUserData = async (data) => {
 
     return response.data; // Devuelve los datos de la respuesta
   } catch (error) {
+    if (error.response) {
+      console.error("Error 400 - Detalles del servidor:", error.response.data);
+    }
     console.error("Error en el POST", error);
-    throw error; // Lanza el error para manejarlo fuera de la función si es necesario
+    throw error;
   }
 };
 //Función Token
@@ -60,8 +63,11 @@ export const postToken = async (dataToken) => {
     console.log(response.status);
     return response.data; // Devuelve los datos de la respuesta
   } catch (error) {
+    if (error.response) {
+      console.error("Error 400 - Detalles del servidor:", error.response.data);
+    }
     console.error("Error en el POST", error);
-    throw error; // Lanza el error para manejarlo fuera de la función si es necesario
+    throw error;
   }
 };
 
@@ -111,8 +117,7 @@ export const savePost = async (newPost) => {
       throw new Error("El accessToken es inválido o no está presente");
     }
     // Realizamos el POST utilizando el accessToken en el header Authorization
-    //console.log('parse', parsedData.result.licenseCreated.code)
-    var cuenta = parsedData.result.licenseCreated.code;
+    console.log("Enviando evento:", newPost.eventCode, "para equipo:", newPost.targetDeviceId || "Default");
 
     const response = await axios.post(API_EVENT, newPost, {
       headers: {
