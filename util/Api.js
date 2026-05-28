@@ -132,3 +132,26 @@ export const savePost = async (newPost) => {
     throw error;
   }
 };
+
+// Función para obtener el estado técnico detallado (separado del pánico)
+export const getDeviceStatus = async (deviceId) => {
+  try {
+    const storedData = await AsyncStorage.getItem("@licencias");
+    if (!storedData) throw new Error("No se encontró el token de sesión");
+
+    const parsedData = JSON.parse(storedData);
+    const accessToken = parsedData.token?.accessToken;
+
+    const response = await axios.get(`${getBaseUrl()}/api/v1/target-device/${deviceId}/status`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json",
+      },
+      timeout: 15000, // 15 segundos de margen para la respuesta técnica
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error al obtener estado técnico:", error);
+    throw error;
+  }
+};
